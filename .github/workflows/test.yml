@@ -25,5 +25,9 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - run: bash build.sh build
-    - run: ./interpreter.elf
+    - name: Setup nasm
+      run: sudo apt install nasm -y
+    - name: Build
+      run: bash build.sh build
+    - name: Run
+      run: ./interpreter.elf
